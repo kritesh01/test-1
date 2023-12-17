@@ -42,10 +42,12 @@
     </div>
     <script>
       var box1 = divv(".box1");
+      var box2 = divv(".box2");
       const dateString1 = "17-12-2023";
       const dateString2 = "17/12/2023";
       const dateString3 = "2023-12-17";
       const dateString4 = "2023/12/17";
+
       formatDate1(dateString1);
       formatDate1(dateString2);
       formatDate1(dateString3);
@@ -58,16 +60,41 @@
         // Check if the formatted date is valid
         var val;
         if (!isNaN(formattedDate.getTime())) {
-          val = "Formatted Date: "+ formattedDate;
+          val = formattedDate;
         } else {
           val = "Invalid date";
         }
+        
+
         var divv = createNewElement("div");
         divv.innerHTML = val;
         box1.appendChild(divv);
         console.log(val)
+        return val;
       }
-      
+          
+      function getDiff(date1,date2){
+        const diff_in_time = date2.getTime() - date1.getTime();
+        const diff_in_days = Math.round(diff_in_time / (1000 * 3600 * 24));
+        return diff_in_days;
+      }
+
+      testDateFormat("17-12-2023","17-12-2023")
+      testDateFormat("17-12-2023","17-11-2023")
+      testDateFormat("17-11-2023","17-12-2023")
+      testDateFormat("1-12-2023","20-12-2023")
+      testDateFormat("01-11-2023","20-11-2023")
+
+      function testDateFormat(date1,date2){
+        var formatDatex1 = formatDate1(date1);
+        var formatDatex2 = formatDate1(date2);
+        var getDiffx = getDiff(formatDatex1,formatDatex2);
+
+        var divv = createNewElement("div");
+        divv.innerHTML = getDiffx;
+        box2.appendChild(divv);
+        console.log(getDiffx)
+      }
       function divv(divv){return document.querySelector(divv);}
       function createNewElement(elementName){return document.createElement(elementName);}
     </script>
