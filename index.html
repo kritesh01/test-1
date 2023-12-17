@@ -5,20 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <style>
-      .mainbody{height:100vh;font-family:var(--ff7);}
+      .mainbody{height:auto;font-family:var(--ff7);padding: 100px 0;}
     </style>
   </head>
   <body>
     <div class="mainbody bor">
-      <div class="text">text</div>
+      <div class="p20 mb20 borx">
+        <h4>Test Box 1</h4>
+        <div class="box1 ptb20 bor">
+          
+        </div>
+      </div>
+      <div class="p20 mb20 borx">
+        <h4>Test Box 2</h4>
+        <div class="box2 ptb20 bor">
+          gfn
+        </div>
+      </div><div class="p20 mb20 borx">
+        <h4>Test Box 3</h4>
+        <div class="box3 ptb20 bor">
+          gfn
+        </div>
+      </div>
+      <div class="p20 mb20 borx">
+        <h4>Test Box 4</h4>
+        <div class="box4 ptb20 bor">
+          gfn
+        </div>
+      </div>
+      <div class="p20 mb20 borx">
+        <h4>Test Box 5</h4>
+        <div class="box5 ptb20 bor">
+          gfn
+        </div>
+      </div>
     </div>
     <script>
-      var txt = document.querySelector(".text");
-      const d = new Date();
-      textt()
-      function textt(){
-        txt.innerText = d;
+      var box1 = divv(".box1");
+      const dateString1 = "17-12-2023";
+      const dateString2 = "17/12/2023";
+      const dateString3 = "2023-12-17";
+      const dateString4 = "2023/12/17";
+      formatDate1(dateString1);
+      formatDate1(dateString2);
+      formatDate1(dateString3);
+      formatDate1(dateString4);
+      function formatDate1(dateString){
+        // Split the date string into day, month, and year components
+        var dateComponents = dateString.split("-");
+        // Create a new Date object with the components rearranged in the "YYYY-MM-DD" format
+        var formattedDate = new Date(dateComponents[2], dateComponents[1] - 1, dateComponents[0]);
+        // Check if the formatted date is valid
+        var val;
+        if (!isNaN(formattedDate.getTime())) {
+          val = "Formatted Date: "+ formattedDate;
+        } else {
+          val = "Invalid date";
+        }
+        var divv = createNewElement("div");
+        divv.innerHTML = val;
+        box1.appendChild(divv);
+        console.log(val)
       }
+      
+      function divv(divv){return document.querySelector(divv);}
+      function createNewElement(elementName){return document.createElement(elementName);}
     </script>
   </body>
-</html>
+  </html>
